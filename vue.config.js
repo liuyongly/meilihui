@@ -5,9 +5,15 @@ module.exports = {
         overlay: { // 遮罩层
           warnings: false,
           errors: false
-        }
-        
+        },
+    open:true,
+    proxy:{
+      '/api':{ 
+          target:'http://47.104.67.170:3000',
+          changeOrigin:true
+      },
     },
+  },
     lintOnSave:false, //直接关闭eslint检查
     configureWebpack: {
       resolve: {

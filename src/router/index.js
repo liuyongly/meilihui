@@ -4,6 +4,7 @@ import shouye from '../views/shouye.vue'
 import shop from '../views/shop.vue'
 import fenlei from '../views/fenlei.vue'
 import mine from '../views/mine.vue'
+import login from '@/views/Login' 
 
 Vue.use(VueRouter)
 
@@ -23,13 +24,35 @@ Vue.use(VueRouter)
     {
       path:'/mine',
       component:mine
-    }
+    },
+    {
+      path:'/login',  
+      component:login
+    },
+    {
+      path:'/regsiter',  
+      component:()=>import('@/views/Regsiter')
+    },
 ]
-
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
 })
+
+router.beforeEach((to,from,next) => {
+  if(to.path==='/mine'){
+    if(localStorage.getItem('token')){
+      next()
+    }else {
+      next('/login')
+    }
+  }else{
+    next()
+
+  }
+})
+
+
 
 export default router

@@ -26,7 +26,7 @@ import { Swipe, SwipeItem } from "vant";
 Vue.use(Swipe);
 Vue.use(SwipeItem);
 import { Search } from "vant";
-import instance from "../utils/http";
+import {instance} from "../utils/http";
 
 Vue.use(Search);
 export default {
